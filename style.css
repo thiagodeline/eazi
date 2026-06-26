@@ -117,7 +117,7 @@ body {
 
 .btn-budget:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(255, 78, 17, 0.5);
+    box-shadow: 0 6px 25px rgba(255, 17, 243, 0.5);
 }
 
 .menu-toggle {
@@ -209,7 +209,7 @@ body {
 
 .btn-hero-glow:hover {
     transform: scale(1.03);
-    box-shadow: 0 0 40px rgba(255, 78, 17, 0.7);
+    box-shadow: 0 0 40px rgba(215, 17, 255, 0.7);
 }
 
 .scroll-arrow {
@@ -468,7 +468,7 @@ body {
 
 .p-tag {
     background-color: rgba(255, 78, 17, 0.15);
-    color: #ff6230;
+    color: #c430ff;
     font-size: 0.78rem;
     font-weight: 600;
     padding: 6px 14px;
@@ -477,7 +477,7 @@ body {
 }
 
 .p-tag-dots {
-    color: #ff6230;
+    color: #c430ff;
     font-weight: bold;
     margin-left: 4px;
 }
@@ -494,13 +494,13 @@ body {
     text-decoration: none;
     margin-top: auto;
     position: relative;
-    box-shadow: 0 10px 30px rgba(255, 78, 17, 0.4);
+    box-shadow: 0 10px 30px rgba(188, 17, 255, 0.4);
     transition: all 0.3s ease;
 }
 
 .btn-premium-card-glow:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 40px rgba(255, 78, 17, 0.65);
+    box-shadow: 0 12px 40px rgba(207, 17, 255, 0.65);
 }
 
 /* Responsividade de Serviços */
