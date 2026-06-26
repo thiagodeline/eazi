@@ -18,15 +18,14 @@ html {
 }
 
 :root {
-    --primary-glow: #ff4e11;
-    --primary-gradient: linear-gradient(135deg, #ff4e11, #ff7a00);
+    --primary-glow: #8a2be2; /* Roxo Neon Vibrante (Purple) */
+    --primary-gradient: linear-gradient(135deg, #8a2be2, #4b0082); /* Gradiente do Roxo para o Indigo Escuro */
     --bg-dark-deep: #080808;
     --bg-card: #121212;
     --text-pure-white: #ffffff;
     --text-muted: #a0a0a0;
     --grid-color: rgba(255, 255, 255, 0.03);
 }
-
 body {
     background-color: var(--bg-dark-deep);
     color: var(--text-pure-white);
