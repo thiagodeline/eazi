@@ -466,14 +466,28 @@ body {
     margin-bottom: 45px;
 }
 
+/* --- AJUSTE DAS TAGS INTERNAS DOS CARDS --- */
 .p-tag {
-    background-color: rgba(255, 78, 17, 0.15);
-    color: #c430ff;
+    background-color: rgba(138, 43, 226, 0.1); /* Roxo sutil de fundo */
+    color: #bf7fff; /* Texto roxo claro/lilás bem visível */
     font-size: 0.78rem;
     font-weight: 600;
     padding: 6px 14px;
     border-radius: 50px;
-    border: 1px solid rgba(255, 78, 17, 0.2);
+    border: 1px solid rgba(138, 43, 226, 0.3); /* Borda roxa combinando perfeitamente */
+}
+
+.p-tag-dots {
+    color: #bf7fff; /* Ajusta os três pontinhos (...) para roxo */
+    font-weight: bold;
+    margin-left: 4px;
+}
+
+/* --- AJUSTE DAS TAGS DOS RAMOS (SEÇÃO DE SEGMENTOS) --- */
+.tag-branch:hover {
+    border-color: var(--primary-glow); /* Agora brilha em roxo no hover */
+    background-color: rgba(138, 43, 226, 0.05); /* Fundo roxo bem suave */
+    transform: translateY(-2px);
 }
 
 .p-tag-dots {
