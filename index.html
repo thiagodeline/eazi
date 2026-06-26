@@ -189,28 +189,5 @@
         });
     </script>
 
-    <!-- Biblioteca Lenis para Rolagem Amortecida Ultra Estética -->
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-    <script>
-        // Inicializa a rolagem suave
-        const lenis = new Lenis({
-            duration: 1.2,     // Duração do efeito (em segundos) - quanto maior, mais suave e lento
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Função matemática de amortecimento
-            orientation: 'vertical',
-            gestureOrientation: 'vertical',
-            smoothWheel: true,
-            wheelMultiplier: 1, // Sensibilidade da rodinha do mouse
-            touchMultiplier: 2,
-            infinite: false,
-        })
-
-        function raf(time) {
-            lenis.raf(time)
-            requestAnimationFrame(raf)
-        }
-
-        requestAnimationFrame(raf)
-    </script>
-
 </body>
 </html>
