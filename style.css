@@ -111,7 +111,7 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
-    box-shadow: 0 4px 15px rgba(255, 78, 17, 0.25);
+    box-shadow: 0 4px 15px rgba(199, 17, 255, 0.25);
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
@@ -201,7 +201,7 @@ body {
     border-radius: 50px;
     text-decoration: none;
     display: inline-block;
-    box-shadow: 0 0 30px rgba(255, 78, 17, 0.45);
+    box-shadow: 0 0 30px rgba(207, 17, 255, 0.45);
     transition: all 0.3s;
     border: none;
     cursor: pointer;
@@ -342,7 +342,7 @@ body {
 
 .badge-layout {
     display: inline-block;
-    background-color: rgba(255, 78, 17, 0.15);
+    background-color: rgba(235, 17, 255, 0.15);
     color: var(--primary-glow);
     padding: 6px 16px;
     border-radius: 4px;
