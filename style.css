@@ -53,38 +53,39 @@ body {
     background-position: center top;
 }
 
-/* --- NAVBAR ESTILO DINÂMICO (EFEITO PÍLULA FLUTUANTE - IMAGE_44DF48.PNG) --- */
+/* --- NAVBAR ESTILO DINÂMICO (FADE SEGREDO - IMAGE_44DF48.PNG) --- */
 .navbar {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #000000;
-    padding: 20px 0;
-    z-index: 1000;
-    /* Transição ultra suave para o efeito de encolhimento e arredondamento */
-    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); 
-}
-
-/* Quando o usuário rolar a página, aplica o efeito idêntico à imagem image_44df48.png */
-.navbar.scrolled {
-    top: 15px; /* Descola o menu do topo da tela */
-    width: 92%; /* Reduz a largura para criar o efeito cortado nas laterais */
+    top: 15px; /* Já inicia na posição flutuante */
+    width: 92%; 
     max-width: 1300px;
     left: 50%;
-    transform: translateX(-50%); /* Centraliza a pílula perfeitamente na tela */
+    transform: translateX(-50%);
+    padding: 14px 24px;
+    border-radius: 100px;
+    z-index: 1000;
     
-    background-color: rgba(10, 10, 10, 0.75) !important; /* Fundo escuro translúcido */
-    backdrop-filter: blur(20px); /* Efeito de vidro fosco chique */
-    -webkit-backdrop-filter: blur(20px);
-    
-    padding: 10px 24px; /* Compacta a barra internamente */
-    border-radius: 100px; /* Transforma as bordas em formato de pílula/cápsula */
-    border: 1px solid rgba(255, 255, 255, 0.08); /* Bordinha sutil de design premium */
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7); /* Sombra suave para destacar o menu do fundo do site */
+    /* Estado inicial no topo: totalmente transparente */
+    background-color: rgba(10, 10, 10, 0);
+    border: 1px solid rgba(255, 255, 255, 0);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+
+    /* Transição focada puramente em opacidade e filtros para o efeito fade */
+    transition: background-color 0.6s ease, border-color 0.6s ease, box-shadow 0.6s ease, backdrop-filter 0.6s ease;
 }
 
-/* Garante o alinhamento perfeito do conteúdo interno mesmo em formato pílula */
+/* Transição suave em Fade ao rolar o site */
+.navbar.scrolled {
+    background-color: rgba(10, 10, 10, 0.75) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+/* Mantém os elementos internos estáveis e alinhados */
 .nav-container {
     width: 100%;
     max-width: 1400px;
