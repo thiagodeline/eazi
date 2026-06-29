@@ -186,14 +186,14 @@
         // 1. Função assíncrona para buscar e injetar o header.html
         async function loadHeader() {
             try {
-                const response = await fetch('pages/header.html');
+                const response = await fetch('pages/header.html'); // Busca o único cabeçalho dentro de pages
                 if (response.ok) {
                     const html = await response.text();
                     document.getElementById('navbar').innerHTML = html;
-                    checkScroll(); // Verifica o scroll atual após carregar
+                    checkScroll();
                 }
             } catch (error) {
-                console.error("Erro ao importar o arquivo do cabeçalho:", error);
+                console.error("Erro ao carregar o cabeçalho no index:", error);
             }
         }
 

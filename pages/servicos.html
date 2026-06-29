@@ -209,14 +209,19 @@
         // Carrega o cabeçalho idêntico ao do index
         async function loadHeader() {
             try {
-                const response = await fetch('header_pages.html');
+                const response = await fetch('header.html'); // Busca o mesmo arquivo que está na mesma pasta
                 if (response.ok) {
-                    const html = await response.text();
+                    let html = await response.text();
+                    
+                    // Corrige as imagens e os links para voltarem uma pasta para a raiz (../)
+                    html = html.replaceAll('assets/images/', '../assets/images/');
+                    html = html.replaceAll('index.html', '../index.html');
+                    
                     document.getElementById('navbar').innerHTML = html;
                     checkScroll();
                 }
             } catch (error) {
-                console.error("Erro ao carregar o cabeçalho em serviços:", error);
+                console.error("Erro ao carregar o cabeçalho adaptativo em serviços:", error);
             }
         }
 
