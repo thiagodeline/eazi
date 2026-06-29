@@ -178,11 +178,7 @@
             </div> </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 eazi solutions. Todos os direitos reservados.</p>
-        </div>
-    </footer>
+    <footer id="rodape"></footer>
 
     <script>
         // Função para alternar entre as abas de forma limpa e suave
@@ -246,6 +242,29 @@
 
         window.addEventListener('scroll', checkScroll);
         document.addEventListener('DOMContentLoaded', loadHeader);
+
+        // Função para carregar o Rodapé em Serviços
+        async function loadRodape() {
+            try {
+                const response = await fetch('rodape.html'); // Busca o arquivo que está na mesma pasta
+                if (response.ok) {
+                    let html = await response.text();
+                    
+                    // Caso você adicione links para a home no rodapé futuramente, isso já previne quebras:
+                    html = html.replaceAll('index.html', '../index.html');
+                    
+                    document.getElementById('rodape').innerHTML = html;
+                }
+            } catch (error) {
+                console.error("Erro ao carregar o rodapé em serviços:", error);
+            }
+        }
+
+// Chame a função quando a página carregar
+document.addEventListener('DOMContentLoaded', () => {
+    loadHeader();
+    loadRodape(); // Adicionado aqui
+});
     </script>
 
 </body>

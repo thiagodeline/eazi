@@ -175,11 +175,7 @@
         </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 eazi solutions. Todos os direitos reservados.</p>
-        </div>
-    </footer>
+    <footer id="rodape"></footer>
 
     <!-- INTERATIVIDADE SCRIPT ENCAPSULADA -->
     <script>
@@ -238,6 +234,25 @@
                 }, 500); 
             }
             setInterval(rotateText, displayPeriod);
+        });
+
+                // Função para carregar o Rodapé no Index
+        async function loadRodape() {
+            try {
+                const response = await fetch('pages/rodape.html'); // Busca o arquivo dentro de pages
+                if (response.ok) {
+                    const html = await response.text();
+                    document.getElementById('rodape').innerHTML = html;
+                }
+            } catch (error) {
+                console.error("Erro ao carregar o rodapé no index:", error);
+            }
+        }
+
+        // Chame a função quando a página carregar
+        document.addEventListener('DOMContentLoaded', () => {
+            loadHeader();
+            loadRodape(); // Adicionado aqui
         });
     </script>
 
