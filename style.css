@@ -89,15 +89,6 @@ body {
     align-items: center;
 }
 
-.logo {
-    color: var(--text-pure-white);
-    font-size: 2rem;
-    font-weight: 800;
-    text-transform: lowercase;
-    letter-spacing: -1px;
-    text-decoration: none;
-}
-
 /* --- AJUSTE DO LOGO OFICIAL EM IMAGEM --- */
 .logo-container {
     display: flex;
@@ -106,7 +97,7 @@ body {
 }
 
 .logo-img {
-    height: 32px; /* Altura ideal e equilibrada dentro do cabeçalho arredondado */
+    height: 32px; /* Altura ideal dentro do cabeçalho */
     width: auto;  /* Mantém a proporção perfeita do logo */
     display: block;
     object-fit: contain;
@@ -114,14 +105,7 @@ body {
 }
 
 .logo-container:hover .logo-img {
-    transform: scale(1.02); /* Leve efeito de feedback ao passar o mouse */
-}
-
-/* Ajuste fino para telas muito pequenas */
-@media (max-width: 480px) {
-    .logo-img {
-        height: 26px; /* Reduz sutilmente em celulares para sobrar espaço para os botões */
-    }
+    transform: scale(1.02); /* Leve feedback ao passar o mouse */
 }
 
 /* Encapsula os botões de ação e serve de âncora para posicionar o menu dropdown */
@@ -153,7 +137,7 @@ body {
     box-shadow: 0 6px 25px rgba(138, 43, 226, 0.5);
 }
 
-/* Botão Redondo com 3 Risquinhos (Estilo image_bd79fb.png) */
+/* Botão Redondo com 3 Risquinhos */
 .menu-toggle {
     width: 40px;
     height: 40px;
@@ -198,7 +182,7 @@ body {
     transform: translateY(-6px) rotate(-45deg);
 }
 
-/* --- DROPDOWN EXCLUSIVO DO BOTÃO DE COMPORTAMENTO INTERNO --- */
+/* --- DROPDOWN DO MENU LATERAL/SUPERIOR --- */
 .nav-menu {
     position: absolute;
     top: 55px;
@@ -216,14 +200,13 @@ body {
     align-items: flex-start;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
     
-    /* Estado inicial totalmente oculto em qualquer resolução */
+    /* Estado inicial oculto */
     opacity: 0;
     transform: translateY(-15px);
     pointer-events: none;
     transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
-/* Classe engatilhada pelo clique JavaScript */
 .nav-menu.active {
     opacity: 1;
     transform: translateY(0);
@@ -244,7 +227,7 @@ body {
     transform: translateX(3px);
 }
 
-/* --- SEÇÃO HERO --- */
+/* --- SEÇÃO HERO E NOVO "Z" GLOW ANIMADO --- */
 .hero {
     padding: 220px 0 100px 0;
     text-align: center;
@@ -255,22 +238,46 @@ body {
     position: relative;
     display: inline-block;
     margin-bottom: 25px;
+    z-index: 2;
 }
 
-.u-shape {
+/* O contorno oficial do Z com desfoque e animação de entrada */
+.z-glow-shape {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -45%);
-    width: 280px;
-    height: 200px;
-    border: 35px solid var(--primary-glow);
-    border-top: none;
-    border-radius: 0 0 140px 140px;
-    opacity: 0.6;
-    filter: blur(14px);
+    transform: translate(-50%, -50%); 
+    width: 320px;   
+    height: 320px;  
+    object-fit: contain;
+    
+    /* Parâmetros de simulação do Neon Premium */
+    opacity: 0.55;
+    filter: blur(16px);
+    -webkit-filter: blur(16px);
     z-index: 1;
     pointer-events: none;
+    
+    /* Gatilho da animação ao carregar */
+    animation: pulse-in-glow 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Animação estruturada de entrada para o Z */
+@keyframes pulse-in-glow {
+    0% {
+        opacity: 0;
+        filter: blur(40px);
+        transform: translate(-50%, -50%) scale(0.6) rotate(-15deg);
+    }
+    50% {
+        opacity: 0.7;
+        filter: blur(12px);
+    }
+    100% {
+        opacity: 0.55;
+        filter: blur(16px);
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    }
 }
 
 .hero-title {
@@ -285,7 +292,7 @@ body {
     font-size: 3.8rem;
     font-weight: 700;
     position: relative;
-    z-index: 2;
+    z-index: 3; /* Fica perfeitamente legível acima do glow */
     letter-spacing: -1.5px;
 }
 
@@ -351,7 +358,7 @@ body {
     transform: rotate(45deg);
 }
 
-/* --- NOVA SEÇÃO: POR QUE NOS ESCOLHER (CONTRASTE PREMIUM CINZA CLARO) --- */
+/* --- SEÇÃO: POR QUE NOS ESCOLHER (CONTRASTE CINZA CLARO) --- */
 .why-choose-us {
     background-color: #f4f4f6 !important; 
     background-image: none !important;    
@@ -655,14 +662,14 @@ body {
     box-shadow: 0 12px 40px rgba(138, 43, 226, 0.6);
 }
 
-/* --- MOCKUP E HEADLINES --- */
+/* --- MOCKUP DE NAVEGADOR --- */
 .browser-mockup {
     background-color: #141414;
     border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.06);
     overflow: hidden;
     max-width: 900px;
-    margin: 40px auto 40px auto;
+    margin: 40px auto;
     box-shadow: 0 40px 80px rgba(0,0,0,0.6);
 }
 
@@ -781,50 +788,10 @@ footer {
     background: var(--primary-gradient);
 }
 
-/* --- RESPONSIVIDADE COMPLETA MÓVEL --- */
-@media (max-width: 950px) {
-    .why-container {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-    .why-content h2 {
-        font-size: 2.3rem;
-    }
-    .why-choose-us {
-        padding: 70px 0;
-    }
-    .services-wrapper-frame {
-        grid-template-columns: 1fr;
-        padding: 25px;
-        border-radius: 24px;
-    }
-    .hero-content h1 {
-        font-size: 2.8rem;
-    }
-    .u-shape {
-        width: 200px;
-        height: 140px;
-        border-width: 25px;
-    }
-    .segments h2, .contact h2 {
-        font-size: 2.2rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .btn-budget {
-        padding: 8px 14px;
-        font-size: 0.8rem;
-    }
-    .logo {
-        font-size: 1.6rem;
-    }
-}
-
 /* --- SISTEMA EESTRUTURADO DE ABAS DE SERVIÇOS --- */
 .tabs-container {
     display: grid;
-    grid-template-columns: 0.8fr 1.2fr; /* Divisão elegante entre menu de abas e conteúdo */
+    grid-template-columns: 0.8fr 1.2fr; 
     gap: 40px;
     align-items: start;
     margin-top: 40px;
@@ -836,7 +803,6 @@ footer {
     gap: 10px;
 }
 
-/* Estilo do Botão da Aba */
 .tab-btn {
     background-color: #0c0c0c;
     border: 1px solid rgba(255, 255, 255, 0.05);
@@ -864,7 +830,6 @@ footer {
     box-shadow: 0 10px 25px rgba(138, 43, 226, 0.2);
 }
 
-/* Painel de Exibição do Conteúdo da Aba */
 .tabs-content-display {
     background-color: #040404;
     border: 1px solid rgba(255, 255, 255, 0.04);
@@ -874,7 +839,6 @@ footer {
     box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.02);
 }
 
-/* Alternância dos painéis ocultos/ativos */
 .tab-panel {
     display: none;
     animation: fadeInTab 0.5s ease forwards;
@@ -905,7 +869,6 @@ footer {
     margin-bottom: 35px;
 }
 
-/* Lista de Recursos Inclusos */
 .tab-features {
     background-color: #0c0c0c;
     border: 1px solid rgba(255, 255, 255, 0.04);
@@ -936,7 +899,6 @@ footer {
     gap: 10px;
 }
 
-/* Adiciona uma bolinha roxa premium customizada antes de cada item */
 .tab-features ul li::before {
     content: "•";
     color: var(--primary-glow);
@@ -944,33 +906,63 @@ footer {
     line-height: 1;
 }
 
-/* Ajustes de Responsividade para as Abas */
+/* --- RESPONSIVIDADE EM TELAS ACIMA E ABAIXO --- */
+@media (max-width: 950px) {
+    .why-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .why-content h2 {
+        font-size: 2.3rem;
+    }
+    .why-choose-us {
+        padding: 70px 0;
+    }
+    .services-wrapper-frame {
+        grid-template-columns: 1fr;
+        padding: 25px;
+        border-radius: 24px;
+    }
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+    .segments h2, .contact h2 {
+        font-size: 2.2rem;
+    }
+}
+
 @media (max-width: 850px) {
     .tabs-container {
-        grid-template-columns: 1fr; /* Transforma o menu lateral em blocos verticais */
+        grid-template-columns: 1fr;
         gap: 25px;
     }
-    
     .tabs-menu {
         flex-direction: row;
-        overflow-x: auto; /* Permite arrastar os botões lateralmente no mobile */
+        overflow-x: auto;
         padding-bottom: 10px;
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
     }
-    
     .tab-btn {
         width: auto;
         padding: 14px 20px;
         font-size: 0.9rem;
     }
-    
     .tabs-content-display {
         padding: 30px 20px;
         min-height: auto;
     }
-    
     .tab-panel h3 {
         font-size: 1.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn-budget {
+        padding: 8px 14px;
+        font-size: 0.8rem;
+    }
+    .logo-img {
+        height: 26px; /* Ajuste para logos mobile */
     }
 }
