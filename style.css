@@ -794,3 +794,157 @@ footer {
         font-size: 1.6rem;
     }
 }
+
+/* --- SISTEMA EESTRUTURADO DE ABAS DE SERVIÇOS --- */
+.tabs-container {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr; /* Divisão elegante entre menu de abas e conteúdo */
+    gap: 40px;
+    align-items: start;
+    margin-top: 40px;
+}
+
+.tabs-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Estilo do Botão da Aba */
+.tab-btn {
+    background-color: #0c0c0c;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--text-muted);
+    padding: 18px 24px;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.tab-btn:hover {
+    color: var(--text-pure-white);
+    border-color: rgba(138, 43, 226, 0.4);
+    background-color: #111111;
+}
+
+.tab-btn.active {
+    background: var(--primary-gradient);
+    color: var(--text-pure-white);
+    border-color: var(--primary-glow);
+    box-shadow: 0 10px 25px rgba(138, 43, 226, 0.2);
+}
+
+/* Painel de Exibição do Conteúdo da Aba */
+.tabs-content-display {
+    background-color: #040404;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 30px;
+    padding: 50px;
+    min-height: 500px;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.02);
+}
+
+/* Alternância dos painéis ocultos/ativos */
+.tab-panel {
+    display: none;
+    animation: fadeInTab 0.5s ease forwards;
+}
+
+.tab-panel.active {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+@keyframes fadeInTab {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.tab-panel h3 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+}
+
+.tab-description {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 35px;
+}
+
+/* Lista de Recursos Inclusos */
+.tab-features {
+    background-color: #0c0c0c;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 40px;
+}
+
+.tab-features h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #bf7fff;
+    margin-bottom: 15px;
+}
+
+.tab-features ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.tab-features ul li {
+    font-size: 1rem;
+    color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Adiciona uma bolinha roxa premium customizada antes de cada item */
+.tab-features ul li::before {
+    content: "•";
+    color: var(--primary-glow);
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+/* Ajustes de Responsividade para as Abas */
+@media (max-width: 850px) {
+    .tabs-container {
+        grid-template-columns: 1fr; /* Transforma o menu lateral em blocos verticais */
+        gap: 25px;
+    }
+    
+    .tabs-menu {
+        flex-direction: row;
+        overflow-x: auto; /* Permite arrastar os botões lateralmente no mobile */
+        padding-bottom: 10px;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .tab-btn {
+        width: auto;
+        padding: 14px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .tabs-content-display {
+        padding: 30px 20px;
+        min-height: auto;
+    }
+    
+    .tab-panel h3 {
+        font-size: 1.7rem;
+    }
+}

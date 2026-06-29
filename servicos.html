@@ -3,70 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serviços | eazi solutions</title>
+    <title>Serviços Completos | eazi solutions</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="grid-bg">
 
     <header class="navbar" id="navbar"></header>
 
-    <section class="hero" style="padding: 180px 0 60px 0;">
+    <section class="hero" style="padding: 160px 0 40px 0;">
         <div class="container hero-content">
             <div class="u-glow-container">
                 <div class="u-shape"></div>
-                <h1 class="hero-title">Nossas <span>Soluções</span></h1>
+                <h1 class="hero-title">Nossas <span>Soluções 360°</span></h1>
             </div>
-            <p>Do pixel ao papel. Desenvolvemos o ecossistema comercial e visual completo para destacar sua empresa no mercado físico e digital.</p>
+            <p>Clique nas abas abaixo para explorar detalhadamente cada solução da nossa agência full-service. Transparência e engenharia de ponta para o seu negócio.</p>
         </div>
     </section>
 
-    <section class="services" style="padding-top: 20px;">
-        <div class="container">
+    <section class="services-tabs-section" style="padding-bottom: 100px;">
+        <div class="container tabs-container">
             
-            <div class="services-wrapper-frame">
+            <div class="tabs-menu">
+                <button class="tab-btn active" onclick="openTab(event, 'dev-sites')">Desenvolvimento de Sites</button>
+                <button class="tab-btn" onclick="openTab(event, 'ecommerces')">E-commerces</button>
+                <button class="tab-btn" onclick="openTab(event, 'landing-pages')">Landing Pages</button>
+                <button class="tab-btn" onclick="openTab(event, 'social-media')">Serviço de Social Media</button>
+                <button class="tab-btn" onclick="openTab(event, 'logos')">Criação de Logo & Branding</button>
+                <button class="tab-btn" onclick="openTab(event, 'edicao-video')">Edição de Vídeo</button>
+                <button class="tab-btn" onclick="openTab(event, 'panfletos-folders')">Panfletos & Folders</button>
+                <button class="tab-btn" onclick="openTab(event, 'banners')">Banners Digitais e Físicos</button>
+                <button class="tab-btn" onclick="openTab(event, 'cartoes-visita')">Cartões de Visita</button>
+            </div>
+
+            <div class="tabs-content-display">
                 
-                <div class="premium-card">
-                    <div class="premium-icon-box">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="16 18 22 12 16 6"></polyline>
-                            <polyline points="8 6 2 12 8 18"></polyline>
-                        </svg>
+                <div id="dev-sites" class="tab-panel active">
+                    <h3>Desenvolvimento de Sites Institucionais<span class="dot-orange">.</span></h3>
+                    <p class="tab-description">A vitrine digital definitiva para a sua empresa. Criamos sites corporativos de alta performance, projetados para transmitir máxima credibilidade, autoridade e converter visitantes em clientes reais 24 horas por dia.</p>
+                    <div class="tab-features">
+                        <h4>O que está incluso no projeto:</h4>
+                        <ul>
+                            <li>Design 100% exclusivo e personalizado para o seu nicho</li>
+                            <li>Otimização ultra-rápida de carregamento (Performance Core Web Vitals)</li>
+                            <li>Responsividade perfeita para Celulares, Tablets e Desktops</li>
+                            <li>Configuração inicial de SEO para aparecer no Google</li>
+                        </ul>
                     </div>
-                    <h3>Ecossistema Digital<span class="dot-orange">.</span></h3>
-                    <p>Engenharia de software e posicionamento estratégico nas redes. Desenvolvemos ferramentas rápidas e designs focados em conversão para escalar o seu faturamento.</p>
-                    
-                    <div class="premium-tags">
-                        <span class="p-tag">Criação de Sites</span>
-                        <span class="p-tag">Aplicativos (Apps)</span>
-                        <span class="p-tag">Social Media (Gestão)</span>
-                        <span class="p-tag">Landing Pages</span>
-                        <span class="p-tag">Identidade Digital</span>
-                        <span class="p-tag-dots">...</span>
-                    </div>
-                    
-                    <a href="index.html#contato" class="btn-premium-card-glow">Dominar o Digital &gt;</a>
+                    <a href="index.html#contato" class="btn-hero-glow">Solicitar Proposta de Site</a>
                 </div>
 
-                <div class="premium-card">
-                    <div class="premium-icon-box">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-                        </svg>
+                <div id="ecommerces" class="tab-panel">
+                    <h3>Lojas Virtuais & E-commerces de Alta Performance<span class="dot-orange">.</span></h3>
+                    <p class="tab-description">Sua estrutura de vendas escalável sem sair do lugar. Desenvolvemos e-commerces modernos, rápidos e extremamente intuitivos, focados na melhor experiência de compra do usuário e com checkout blindado.</p>
+                    <div class="tab-features">
+                        <h4>O que está incluso no projeto:</h4>
+                        <ul>
+                            <li>Integração total com gateways de pagamento (Mercado Pago, Stripe, Pix)</li>
+                            <li>Painel administrativo intuitivo para gestão de estoque e produtos</li>
+                            <li>Cálculo automatizado de frete (Correios, Melhore Envio, Transportadoras)</li>
+                            <li>Certificado de Segurança SSL e proteção de dados dos clientes</li>
+                        </ul>
                     </div>
-                    <h3>Design & Físico<span class="dot-orange">.</span></h3>
-                    <p>Branding institucional e papelaria corporativa de alto padrão tátil. Construímos a estética e a presença real da sua marca para gerar desejo imediato.</p>
-                    
-                    <div class="premium-tags">
-                        <span class="p-tag">Logos Premium</span>
-                        <span class="p-tag">Cartões de Visita</span>
-                        <span class="p-tag">Panfletos Impactantes</span>
-                        <span class="p-tag">Folders Corporativos</span>
-                        <span class="p-tag">Identidade Visual</span>
-                        <span class="p-tag-dots">...</span>
+                    <a href="index.html#contato" class="btn-hero-glow">Construir Minha Loja Virtual</a>
+                </div>
+
+                <div id="landing-pages" class="tab-panel">
+                    <h3>Landing Pages de Alta Conversão<span class="dot-orange">.</span></h3>
+                    <p class="tab-description">Páginas de vendas de tiro curto criadas para campanhas de tráfego pago (Google Ads, Meta Ads). Desenvolvemos layouts focados em neurodesign e copywriting estratégico para capturar leads ou vender um produto específico de forma imediata.</p>
+                    <div class="tab-features">
+                        <h4>O que está incluso no projeto:</h4>
+                        <ul>
+                            <li>Copywriting estruturado focado em quebra de objeções</li>
+                            <li>Velocidade de carregamento instantânea (menos de 2 segundos)</li>
+                            <li>Integração direta com WhatsApp, CRM ou e-mail marketing</li>
+                            <li>Instalação de pixels de rastreamento (Meta, Google, TikTok)</li>
+                        </ul>
                     </div>
-                    
-                    <a href="index.html#contato" class="btn-premium-card-glow">Criar Identidade Física &gt;</a>
+                    <a href="index.html#contato" class="btn-hero-glow">Criar Landing Page Estratégica</a>
+                </div>
+
+                <div id="social-media" class="tab-panel">
+                    <h3>Gestão e Posicionamento de Social Media<span class="dot-orange">.</span></h3>
+                    <p class="tab-description">Não venda apenas produtos, construa uma comunidade devota à sua marca. Nossa equipe cuida do planejamento estético, linha editorial e cronograma de publicações do seu Instagram, LinkedIn e TikTok para gerar autoridade no mercado.</p>
+                    <div class="tab-features">
+                        <h4>O que está incluso no projeto:</h4>
+                        <ul>
+                            <li>Calendário estratégico mensal de conteúdos</li>
+                            <li>Criação de artes premium alinhadas com a identidade da marca</li>
+                            <li>Roteirização para Reels/TikToks que geram engajamento</li>
+                            <li>Análise de métricas trimestrais para otimização de resultados</li>
+                        </ul>
+                    </div>
+                    <a href="index.html#contato" class="btn-hero-glow">Ter um Perfil Profissional</a>
+                </div>
+
+                <div id="logos" class="tab-panel">
+                    <h3>Criação de Logotipos & Branding Corporativo<span class="dot-orange">.</span></h3>
+                    <p class="tab-description">A essência visual do seu negócio. Projetamos logotipos marcantes baseados em psicologia das cores, tipografia elegante e simbolismo matemático para garantir que sua marca seja memorável e premium.</p>
+                    <div class="tab-features">
+                        <h4>O que está incluso no projeto:</h4>
+                        <ul>
+                            <li>Logotipo principal, sub-marca, variações de cores e ícones</li>
+                            <li>Estudo e paleta de cores institucional completa</li>
+                            <li>Tipografia oficial recomendada para a comunicação corporativa</li>
+                            <li>Manual de Identidade Visual simplificado em PDF</li>
+                        </ul>
+                    </div>
+                    <a href="index.html#contato" class="btn-hero-glow">Desenhar Minha Identidade Visual</a>
+                </div>
+
+                <div id="edicao-video" class="tab-panel">
+                    <h3>Edição de Vídeo Comercial & Dinâmico<span class="dot-orange">.</span></h3>
+                    <p class="tab-description">Retenha a atenção do seu cliente nos primeiros 3 segundos. Editamos criativos para anúncios, vídeos institucionais, Reels, Shorts e vídeos longos para o YouTube usando cortes dinâmicos, sound design imersivo e legendas magnéticas.</p>
+                    <div class="tab-features">
+                        <h4>O que está incluso no projeto:</h4>
+                        <ul>
+                            <li>Cortes precisos e ritmo dinâmico para evitar abandono do vídeo</li>
+                            <li>Correção de cor e tratamento de áudio profissional</li>
+                            <li>Legendas dinâmicas estilizadas (Estilo Hormozi)</li>
+                            <li>Efeitos sonoros (Sound Design) estratégicos para prender a atenção</li>
+                        </ul>
+                    </div>
+                    <a href="index.html#contato" class="btn-hero-glow">Contratar Edição de Vídeo</a>
+                </div>
+
+                <div id="panfletos-folders" class="tab-panel">
+                    <h3>Design de Panfletos, Flyers & Folders Corporativos<span class="dot-orange">.</span></h3>
+                    <p class="tab-description">A força do marketing tátil na mão do seu cliente. Desenvolvemos o design de folhetos comerciais e folders corporativos (incluindo layouts complexos de 2 e 3 dobras) perfeitamente alinhados com a identidade do seu site.</p>
+                    <div class="tab-features">
+                        <h4>O que está incluso no projeto:</h4>
+                        <ul>
+                            <li>Arquivos finais entregues em altíssima resolução prontos para a gráfica (CMYK)</li>
+                            <li>Layout inteligente focado na leitura rápida de benefícios</li>
+                            <li>Inclusão de QR Codes dinâmicos interligando o panfleto físico ao seu site</li>
+                            <li>Revisão técnica de margens de sangria e segurança para impressão</li>
+                        </ul>
+                    </div>
+                    <a href="index.html#contato" class="btn-why-dark" style="color:#fff;">Criar Arte para Impressão</a>
+                </div>
+
+                <div id="banners" class="tab-panel">
+                    <h3>Banners Digitais (Anúncios) e Físicos (Fachadas)<span class="dot-orange">.</span></h3>
+                    <p class="tab-description">Seja visto com impacto em qualquer lugar. Criamos banners digitais estáticos ou animados para campanhas de remarketing no Google Display e sites parceiros, além de artes em grande escala para outdoors, fachadas e lonas físicas.</p>
+                    <div class="tab-features">
+                        <h4>O que está incluso no projeto:</h4>
+                        <ul>
+                            <li>Adaptabilidade para todos os formatos exigidos pelo Google Ads</li>
+                            <li>Design limpo focado na Call to Action (Chamada para Ação)</li>
+                            <li>Arquivos vetorizados para impressões em grandes formatos sem perda de qualidade</li>
+                            <li>Harmonia visual exata com as redes sociais da empresa</li>
+                        </ul>
+                    </div>
+                    <a href="index.html#contato" class="btn-hero-glow">Encomendar Meus Banners</a>
+                </div>
+
+                <div id="cartoes-visita" class="tab-panel">
+                    <h3>Cartões de Visita Minimalistas e Premium<span class="dot-orange">.</span></h3>
+                    <p class="tab-description">A primeira impressão é a que fica no fechamento de grandes contratos. Desenvolvemos designs de cartões de visita sofisticados, ideais para acabamentos especiais em gráficas como verniz localizado, hot stamping ou corte especial.</p>
+                    <div class="tab-features">
+                        <h4>O que está incluso no projeto:</h4>
+                        <ul>
+                            <li>Design frente e verso exclusivo de alto padrão estético</li>
+                            <li>Otimização para acabamentos gráficos sofisticados</li>
+                            <li>Fechamento de arquivo em PDF/X-1a (Padrão ouro de gráficas)</li>
+                            <li>Opcional: Versão digital interativa com botões clicáveis</li>
+                        </ul>
+                    </div>
+                    <a href="index.html#contato" class="btn-hero-glow">Criar Meu Cartão de Visita</a>
                 </div>
 
             </div> </div>
@@ -79,6 +182,27 @@
     </footer>
 
     <script>
+        // Função para alternar entre as abas de forma limpa e suave
+        function openTab(evt, tabId) {
+            let i, tabcontent, tablinks;
+            
+            // Esconde todas as abas
+            tabcontent = document.getElementsByClassName("tab-panel");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+
+            // Remove a classe "active" de todos os botões do menu lateral
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+
+            // Mostra a aba clicada e adiciona a classe active ao botão correspondente
+            document.getElementById(tabId).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
         // Carrega o cabeçalho idêntico ao do index
         async function loadHeader() {
             try {
@@ -103,7 +227,6 @@
             }
         }
 
-        // Função de clique ativada pelo botão de 3 risquinhos
         function toggleMenu() {
             const navMenu = document.getElementById('nav-menu');
             const menuToggle = document.getElementById('menu-toggle');
