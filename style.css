@@ -59,7 +59,7 @@ body {
     max-width: 1300px;
     left: 50%;
     transform: translateX(-50%);
-    padding: 16px 24px;
+    padding: 12px 24px;
     border-radius: 100px;
     z-index: 1000;
     
@@ -69,8 +69,7 @@ body {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0);
     backdrop-filter: blur(0px);
     -webkit-backdrop-filter: blur(0px);
-
-    transition: background-color 0.6s ease, border-color 0.6s ease, box-shadow 0.6s ease, backdrop-filter 0.6s ease;
+    transition: all 0.5s ease;
 }
 
 /* Ativação suave com scroll */
@@ -82,14 +81,13 @@ body {
     -webkit-backdrop-filter: blur(20px);
 }
 
+/* Distribuição direta: Logo na esquerda, grupo de botões na direita */
 .nav-container {
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
 }
-
-.nav-blank { display: block; }
 
 .logo {
     color: var(--text-pure-white);
@@ -100,11 +98,12 @@ body {
     text-decoration: none;
 }
 
+/* Encapsula os botões de ação e serve de âncora para posicionar o menu dropdown */
 .nav-actions {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
     gap: 18px;
+    position: relative;
 }
 
 .btn-budget {
@@ -120,6 +119,7 @@ body {
     gap: 8px;
     box-shadow: 0 4px 15px rgba(138, 43, 226, 0.25);
     transition: transform 0.2s, box-shadow 0.2s;
+    white-space: nowrap;
 }
 
 .btn-budget:hover {
@@ -127,6 +127,7 @@ body {
     box-shadow: 0 6px 25px rgba(138, 43, 226, 0.5);
 }
 
+/* Botão Redondo com 3 Risquinhos (Estilo image_bd79fb.png) */
 .menu-toggle {
     width: 40px;
     height: 40px;
@@ -139,6 +140,7 @@ body {
     justify-content: center;
     align-items: center;
     gap: 4px;
+    z-index: 1001;
 }
 
 .menu-toggle .bar {
@@ -146,6 +148,74 @@ body {
     height: 2px;
     background-color: #000000;
     border-radius: 1px;
+    transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+}
+
+/* Transformação para o formato de 'X' ao abrir */
+.menu-toggle.open {
+    background-color: var(--primary-glow);
+}
+
+.menu-toggle.open .bar {
+    background-color: var(--text-pure-white);
+}
+
+.menu-toggle.open .bar:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+
+.menu-toggle.open .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.open .bar:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+}
+
+/* --- DROPDOWN EXCLUSIVO DO BOTÃO DE COMPORTAMENTO INTERNO --- */
+.nav-menu {
+    position: absolute;
+    top: 55px;
+    right: 0;
+    background-color: rgba(14, 14, 14, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    padding: 22px;
+    border-radius: 20px;
+    gap: 16px;
+    align-items: flex-start;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+    
+    /* Estado inicial totalmente oculto em qualquer resolução */
+    opacity: 0;
+    transform: translateY(-15px);
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Classe engatilhada pelo clique JavaScript */
+.nav-menu.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.menu-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    width: 100%;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.menu-link:hover {
+    color: var(--text-pure-white);
+    transform: translateX(3px);
 }
 
 /* --- SEÇÃO HERO --- */
@@ -177,6 +247,14 @@ body {
     pointer-events: none;
 }
 
+.hero-title {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
 .hero-content h1 {
     font-size: 3.8rem;
     font-weight: 700;
@@ -188,6 +266,16 @@ body {
 .hero-content h1 span {
     color: var(--text-pure-white);
     display: block;
+}
+
+.txt-fade {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    color: #a855f7; 
+}
+
+.txt-fade.hide {
+    opacity: 0;
 }
 
 .hero-content p {
@@ -235,6 +323,131 @@ body {
     border-bottom: 2px solid #fff;
     border-right: 2px solid #fff;
     transform: rotate(45deg);
+}
+
+/* --- NOVA SEÇÃO: POR QUE NOS ESCOLHER (CONTRASTE PREMIUM CINZA CLARO) --- */
+.why-choose-us {
+    background-color: #f4f4f6 !important; 
+    background-image: none !important;    
+    padding: 100px 0;
+    color: #1a1a1a;                      
+    position: relative;
+    z-index: 10;
+}
+
+.why-container {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;  
+    gap: 60px;
+    align-items: center;
+}
+
+.why-content {
+    text-align: left;
+}
+
+.why-tag {
+    display: inline-block;
+    background-color: rgba(138, 43, 226, 0.08);
+    color: #8a2be2;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.why-content h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -1.5px;
+    color: #0c0c0c;
+    margin-bottom: 25px;
+}
+
+.why-content h2 span {
+    color: #8a2be2; 
+}
+
+.why-lead-text {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: #3a3a3c;
+    font-weight: 500;
+}
+
+.why-divider {
+    width: 60px;
+    height: 3px;
+    background-color: #8a2be2;
+    margin: 25px 0;
+    border-radius: 2px;
+}
+
+.why-body-text {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #515154;
+    margin-bottom: 35px;
+}
+
+.btn-why-dark {
+    display: inline-block;
+    background-color: #0c0c0c;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 14px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.btn-why-dark:hover {
+    background-color: #8a2be2;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(138, 43, 226, 0.3);
+}
+
+.why-visual {
+    position: relative;
+}
+
+.visual-card-wrapper {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+    aspect-ratio: 4 / 3;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.visual-card-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.visual-card-wrapper:hover img {
+    transform: scale(1.03);
+}
+
+.visual-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #ffffff;
+    color: #0c0c0c;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 /* --- SEÇÃO DE SEGMENTOS --- */
@@ -471,27 +684,6 @@ body {
     font-weight: 600;
 }
 
-.headline-container h2 {
-    font-size: 3.2rem;
-    margin-bottom: 25px;
-    letter-spacing: -1px;
-}
-
-.tag-reason {
-    border: 1px solid rgba(255,255,255,0.1);
-    display: inline-block;
-    padding: 6px 20px;
-    border-radius: 30px;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin-bottom: 25px;
-    background-color: rgba(255,255,255,0.02);
-}
-
-.highlight-box {
-    border-bottom: 4px solid var(--primary-glow);
-}
-
 /* --- SEÇÃO DE CONTATO --- */
 .contact {
     padding: 100px 0;
@@ -563,135 +755,7 @@ footer {
     background: var(--primary-gradient);
 }
 
-/* --- NOVA SEÇÃO: POR QUE NOS ESCOLHER (CONTRASTE PREMIUM CINZA CLARO) --- */
-.why-choose-us {
-    background-color: #f4f4f6 !important; /* Inversão de cor: cinza claro premium */
-    background-image: none !important;    /* Força a remoção completa do grid de linhas */
-    padding: 100px 0;
-    color: #1a1a1a;                      /* Textos escuros para máxima legibilidade */
-    position: relative;
-    z-index: 10;
-}
-
-.why-container {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;  /* Divisão assimétrica moderna */
-    gap: 60px;
-    align-items: center;
-}
-
-/* Elementos de Texto */
-.why-content {
-    text-align: left;
-}
-
-.why-tag {
-    display: inline-block;
-    background-color: rgba(138, 43, 226, 0.08);
-    color: #8a2be2;
-    padding: 6px 16px;
-    border-radius: 50px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 20px;
-}
-
-.why-content h2 {
-    font-size: 3rem;
-    font-weight: 800;
-    line-height: 1.2;
-    letter-spacing: -1.5px;
-    color: #0c0c0c;
-    margin-bottom: 25px;
-}
-
-.why-content h2 span {
-    color: #8a2be2; /* Mantém o roxo assinatura da eazi */
-}
-
-.why-lead-text {
-    font-size: 1.25rem;
-    line-height: 1.6;
-    color: #3a3a3c;
-    font-weight: 500;
-}
-
-.why-divider {
-    width: 60px;
-    height: 3px;
-    background-color: #8a2be2;
-    margin: 25px 0;
-    border-radius: 2px;
-}
-
-.why-body-text {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    color: #515154;
-    margin-bottom: 35px;
-}
-
-/* Botão Escuro Invertido para o Fundo Claro */
-.btn-why-dark {
-    display: inline-block;
-    background-color: #0c0c0c;
-    color: #ffffff;
-    font-size: 0.95rem;
-    font-weight: 700;
-    padding: 14px 30px;
-    border-radius: 50px;
-    text-decoration: none;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
-}
-
-.btn-why-dark:hover {
-    background-color: #8a2be2;
-    transform: translateY(-2px);
-    box-shadow: 0 12px 30px rgba(138, 43, 226, 0.3);
-}
-
-/* Coluna Visual da Direita */
-.why-visual {
-    position: relative;
-}
-
-.visual-card-wrapper {
-    position: relative;
-    border-radius: 24px;
-    overflow: hidden;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
-    aspect-ratio: 4 / 3;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.visual-card-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-.visual-card-wrapper:hover img {
-    transform: scale(1.03);
-}
-
-.visual-badge {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background-color: #ffffff;
-    color: #0c0c0c;
-    font-size: 0.8rem;
-    font-weight: 700;
-    padding: 8px 16px;
-    border-radius: 50px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-/* Responsividade Ajustada para Telas Menores */
+/* --- RESPONSIVIDADE COMPLETA MÓVEL --- */
 @media (max-width: 950px) {
     .why-container {
         grid-template-columns: 1fr;
@@ -703,10 +767,6 @@ footer {
     .why-choose-us {
         padding: 70px 0;
     }
-}
-
-/* --- RESPONSIVIDADE COMPLETA MÓVEL --- */
-@media (max-width: 950px) {
     .services-wrapper-frame {
         grid-template-columns: 1fr;
         padding: 25px;
@@ -720,116 +780,17 @@ footer {
         height: 140px;
         border-width: 25px;
     }
-    .headline-container h2 {
-        font-size: 2.2rem;
-    }
     .segments h2, .contact h2 {
         font-size: 2.2rem;
     }
 }
 
-/* Estilo para a barrinha piscante */
-.txt-rotate > .wrap {
-  border-right: 0.08em solid #a855f7; /* Roxo combinando com o botão do seu site */
-  padding-right: 5px;
-  white-space: nowrap;
-}
-
-/* Garante que o título principal fique sempre alinhado na mesma linha */
-.hero-title {
-    display: inline-flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 12px; /* Espaçamento entre a palavra dinâmica e o resto do texto */
-}
-
-/* Estilo e animação de fade para a palavra dinâmica */
-.txt-fade {
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out; /* Controla a suavidade do fade */
-    color: #a855f7; /* Deixa a palavra dinâmica em roxo para destacar seu modelo full-service */
-}
-
-/* Classe utilitária que o JS vai usar para sumir com o texto temporariamente */
-.txt-fade.hide {
-    opacity: 0;
-}
-
-/* --- ESTILIZAÇÃO DO NOVO MENU INTERNO (HEADER EXPANSÍVEL) --- */
-.nav-menu {
-    display: flex;
-    gap: 32px;
-    margin-right: 20px;
-    align-items: center;
-}
-
-.menu-link {
-    color: var(--text-muted);
-    text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 500;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.menu-link:hover {
-    color: var(--text-pure-white);
-    transform: translateY(-1px);
-}
-
-/* Transição suave para transformar os 3 risquinhos em X */
-.menu-toggle .bar {
-    transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
-}
-
-.menu-toggle.open {
-    background-color: var(--primary-glow);
-}
-
-.menu-toggle.open .bar {
-    background-color: var(--text-pure-white);
-}
-
-.menu-toggle.open .bar:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
-}
-
-.menu-toggle.open .bar:nth-child(2) {
-    opacity: 0;
-}
-
-.menu-toggle.open .bar:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
-}
-
-/* Menu Dropdown Flutuante para Dispositivos Móveis e Telas Menores */
-@media (max-width: 850px) {
-    .nav-menu {
-        position: absolute;
-        top: 85px;
-        right: 0;
-        background-color: rgba(14, 14, 14, 0.96);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(25px);
-        -webkit-backdrop-filter: blur(25px);
-        flex-direction: column;
-        width: 240px;
-        padding: 35px 25px;
-        border-radius: 24px;
-        gap: 24px;
-        align-items: flex-start;
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
-        
-        /* Estado inicial recolhido */
-        opacity: 0;
-        transform: translateY(-15px);
-        pointer-events: none;
-        transition: opacity 0.4s ease, transform 0.4s ease;
+@media (max-width: 480px) {
+    .btn-budget {
+        padding: 8px 14px;
+        font-size: 0.8rem;
     }
-
-    .nav-menu.active {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
+    .logo {
+        font-size: 1.6rem;
     }
 }

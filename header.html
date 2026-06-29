@@ -1,21 +1,26 @@
 <div class="nav-container">
-    <div class="nav-blank"></div>
-    <a href="index.html" class="logo">eazi</a>
+    <!-- Lado Esquerdo: Apenas o logo original -->
+    <a href="#" class="logo">eazi</a>
+    
+    <!-- Lado Direito: Ações (Botão de Orçamento + Botão de 3 Risquinhos) -->
     <div class="nav-actions">
-        <nav class="nav-menu" id="nav-menu">
-            <a href="index.html" class="menu-link">Home</a>
-            <a href="agencia.html" class="menu-link">A Agência</a>
-            <a href="servicos.html" class="menu-link">Serviços</a>
-        </nav>
-
         <a href="#contato" class="btn-budget">
-            Solicitar Orçamento 
-            <span class="arrow">&gt;</span>
+            Falar com especialista 
         </a>
-        <button class="menu-toggle" id="menu-toggle" aria-label="Menu" onclick="toggleMenu()">
+        
+        <!-- Botão Interativo que aciona o Menu Invisível -->
+        <button class="menu-toggle" id="menu-toggle" onclick="toggleMenu()" aria-label="Menu">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
         </button>
+
+        <!-- O Menu com os links fica escondido aqui dentro das ações -->
+        <nav class="nav-menu" id="nav-menu">
+            <a href="#inicio" class="menu-link" onclick="toggleMenu()">Início</a>
+            <a href="#por-que-nos-escolher" class="menu-link" onclick="toggleMenu()">A Agência</a>
+            <a href="#servicos" class="menu-link" onclick="toggleMenu()">Serviços</a>
+            <a href="#contato" class="menu-link" onclick="toggleMenu()">Contato</a>
+        </nav>
     </div>
 </div>
