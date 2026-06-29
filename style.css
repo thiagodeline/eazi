@@ -563,6 +563,148 @@ footer {
     background: var(--primary-gradient);
 }
 
+/* --- NOVA SEÇÃO: POR QUE NOS ESCOLHER (CONTRASTE PREMIUM CINZA CLARO) --- */
+.why-choose-us {
+    background-color: #f4f4f6 !important; /* Inversão de cor: cinza claro premium */
+    background-image: none !important;    /* Força a remoção completa do grid de linhas */
+    padding: 100px 0;
+    color: #1a1a1a;                      /* Textos escuros para máxima legibilidade */
+    position: relative;
+    z-index: 10;
+}
+
+.why-container {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;  /* Divisão assimétrica moderna */
+    gap: 60px;
+    align-items: center;
+}
+
+/* Elementos de Texto */
+.why-content {
+    text-align: left;
+}
+
+.why-tag {
+    display: inline-block;
+    background-color: rgba(138, 43, 226, 0.08);
+    color: #8a2be2;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.why-content h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -1.5px;
+    color: #0c0c0c;
+    margin-bottom: 25px;
+}
+
+.why-content h2 span {
+    color: #8a2be2; /* Mantém o roxo assinatura da eazi */
+}
+
+.why-lead-text {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: #3a3a3c;
+    font-weight: 500;
+}
+
+.why-divider {
+    width: 60px;
+    height: 3px;
+    background-color: #8a2be2;
+    margin: 25px 0;
+    border-radius: 2px;
+}
+
+.why-body-text {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #515154;
+    margin-bottom: 35px;
+}
+
+/* Botão Escuro Invertido para o Fundo Claro */
+.btn-why-dark {
+    display: inline-block;
+    background-color: #0c0c0c;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 14px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.btn-why-dark:hover {
+    background-color: #8a2be2;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(138, 43, 226, 0.3);
+}
+
+/* Coluna Visual da Direita */
+.why-visual {
+    position: relative;
+}
+
+.visual-card-wrapper {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+    aspect-ratio: 4 / 3;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.visual-card-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.visual-card-wrapper:hover img {
+    transform: scale(1.03);
+}
+
+.visual-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #ffffff;
+    color: #0c0c0c;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Responsividade Ajustada para Telas Menores */
+@media (max-width: 950px) {
+    .why-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .why-content h2 {
+        font-size: 2.3rem;
+    }
+    .why-choose-us {
+        padding: 70px 0;
+    }
+}
+
 /* --- RESPONSIVIDADE COMPLETA MÓVEL --- */
 @media (max-width: 950px) {
     .services-wrapper-frame {
