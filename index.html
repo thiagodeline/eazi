@@ -8,23 +8,8 @@
 </head>
 <body class="grid-bg">
 
-    <header class="navbar" id="navbar">
-        <div class="nav-container">
-            <div class="nav-blank"></div>
-            <a href="#" class="logo">eazi</a>
-            <div class="nav-actions">
-                <a href="#contato" class="btn-budget">
-                    Solicitar Orçamento 
-                    <span class="arrow">&gt;</span>
-                </a>
-                <button class="menu-toggle" aria-label="Menu">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </button>
-            </div>
-        </div>
-    </header>
+    <!-- O Header começa vazio e o JavaScript "puxa" o conteúdo do header.html dinamicamente -->
+    <header class="navbar" id="navbar"></header>
 
     <section id="inicio" class="hero">
         <div class="container hero-content">
@@ -193,84 +178,64 @@
         </div>
     </footer>
 
-    <!-- TODO O JAVASCRIPT CORRETAMENTE ENCAPSULADO AQUI -->
+    <!-- INTERATIVIDADE SCRIPT ENCAPSULADA -->
     <script>
-        // 1. Efeito do Menu/Navbar no Scroll
-        window.addEventListener('scroll', function() {
+        // 1. Função assíncrona para buscar e injetar o header.html
+        async function loadHeader() {
+            try {
+                const response = await fetch('header.html');
+                if (response.ok) {
+                    const html = await response.text();
+                    document.getElementById('navbar').innerHTML = html;
+                    checkScroll(); // Verifica o scroll atual após carregar
+                }
+            } catch (error) {
+                console.error("Erro ao importar o arquivo do cabeçalho:", error);
+            }
+        }
+
+        // 2. Efeito visual da Navbar no Scroll (Adiciona fundo fosco)
+        function checkScroll() {
             const navbar = document.getElementById('navbar');
+            if (!navbar) return;
             if (window.scrollY > 30) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
-        });
-
-        // 2. Lógica de rotação do texto da headline
-        var TxtRotate = function(el, toRotate, period) {
-          this.toRotate = toRotate;
-          this.el = el;
-          this.loopNum = 0;
-          this.period = parseInt(period, 10) || 2000;
-          this.txt = '';
-          this.tick();
-          this.isDeleting = false;
-        };
-
-        TxtRotate.prototype.tick = function() {
-          var i = this.loopNum % this.toRotate.length;
-          var fullTxt = this.toRotate[i];
-
-          if (this.isDeleting) {
-            this.txt = fullTxt.substring(0, this.txt.length - 1);
-          } else {
-            this.txt = fullTxt.substring(0, this.txt.length + 1);
-          }
-
-          this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
-
-          var thiz = this;
-          var delta = 200 - Math.random() * 100; // Ajustei a velocidade para ficar mais natural
-
-          if (this.isDeleting) { delta /= 2; }
-
-          if (!this.isDeleting && this.txt === fullTxt) {
-            delta = this.period;
-            this.isDeleting = true;
-          } else if (this.isDeleting && this.txt === '') {
-            this.isDeleting = false;
-            this.loopNum++;
-            delta = 500;
-          }
-
-          setTimeout(function() {
-            thiz.tick();
-          }, delta);
-        };
-
-        // Inicializa o efeito assim que o documento carregar
-        document.addEventListener("DOMContentLoaded", function() {
-        const words = ["Criar", "Inovar", "Marketing", "Full-service"];
-        const textElement = document.getElementById("dynamic-text");
-        let currentIndex = 0;
-        const displayPeriod = 2500; // Tempo que a palavra fica visível (2.5 segundos)
-
-        function rotateText() {
-            // 1. Adiciona a classe que faz o texto sumir suavemente (Fade Out)
-            textElement.classList.add("hide");
-
-            // 2. Aguarda a animação de Fade Out terminar (500ms do CSS) para trocar a palavra
-            setTimeout(() => {
-                currentIndex = (currentIndex + 1) % words.length;
-                textElement.textContent = words[currentIndex];
-                
-                // 3. Remove a classe para o texto reaparecer suavemente (Fade In)
-                textElement.classList.remove("hide");
-            }, 500); 
         }
 
-        // Executa a troca a cada intervalo de tempo definido
-        setInterval(rotateText, displayPeriod);
-});
+        // 3. Controle do Menu de links (abre e fecha nos 3 risquinhos)
+        function toggleMenu() {
+            const navMenu = document.getElementById('nav-menu');
+            const menuToggle = document.getElementById('menu-toggle');
+            if(navMenu && menuToggle) {
+                navMenu.classList.toggle('active');
+                menuToggle.classList.toggle('open');
+            }
+        }
+
+        window.addEventListener('scroll', checkScroll);
+        document.addEventListener('DOMContentLoaded', loadHeader);
+
+        // 4. Lógica de rotação de opacidade do texto da headline (Hero)
+        document.addEventListener("DOMContentLoaded", function() {
+            const words = ["Criar", "Inovar", "Marketing", "Full-service"];
+            const textElement = document.getElementById("dynamic-text");
+            let currentIndex = 0;
+            const displayPeriod = 2500;
+
+            function rotateText() {
+                if(!textElement) return;
+                textElement.classList.add("hide");
+                setTimeout(() => {
+                    currentIndex = (currentIndex + 1) % words.length;
+                    textElement.textContent = words[currentIndex];
+                    textElement.classList.remove("hide");
+                }, 500); 
+            }
+            setInterval(rotateText, displayPeriod);
+        });
     </script>
 
 </body>
