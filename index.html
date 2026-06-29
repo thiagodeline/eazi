@@ -77,13 +77,12 @@
             <h2 class="section-title-premium">Nossas <span>Soluções:</span></h2>
             <p class="section-desc text-center">Uma estrutura completa dividida em dois ecossistemas para transformar a tecnologia e a estética do seu negócio.</p>
             
-            <!-- Grande Moldura Escura Arredondada (Estilo image_ae7403.jpg) -->
+            <!-- Grande Moldura Escura Arredondada -->
             <div class="services-wrapper-frame">
                 
                 <!-- Bloco 1: Engenharia & Desenvolvimento -->
                 <div class="premium-card">
                     <div class="premium-icon-box">
-                        <!-- Ícone de Código/Tecnologia em SVG -->
                         <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="16 18 22 12 16 6"></polyline>
                             <polyline points="8 6 2 12 8 18"></polyline>
@@ -107,7 +106,6 @@
                 <!-- Bloco 2: Design & audiovisual -->
                 <div class="premium-card">
                     <div class="premium-icon-box">
-                        <!-- Ícone de Criação/Mídia em SVG -->
                         <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"></path>
                             <path d="M12 8V16L18 12L12 8Z" fill="#ffffff"></path>
@@ -173,7 +171,9 @@
         </div>
     </footer>
 
+    <!-- TODO O JAVASCRIPT CORRETAMENTE ENCAPSULADO AQUI -->
     <script>
+        // 1. Efeito do Menu/Navbar no Scroll
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 30) {
@@ -182,59 +182,61 @@
                 navbar.classList.remove('scrolled');
             }
         });
+
+        // 2. Lógica de rotação do texto da headline
+        var TxtRotate = function(el, toRotate, period) {
+          this.toRotate = toRotate;
+          this.el = el;
+          this.loopNum = 0;
+          this.period = parseInt(period, 10) || 2000;
+          this.txt = '';
+          this.tick();
+          this.isDeleting = false;
+        };
+
+        TxtRotate.prototype.tick = function() {
+          var i = this.loopNum % this.toRotate.length;
+          var fullTxt = this.toRotate[i];
+
+          if (this.isDeleting) {
+            this.txt = fullTxt.substring(0, this.txt.length - 1);
+          } else {
+            this.txt = fullTxt.substring(0, this.txt.length + 1);
+          }
+
+          this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+          var thiz = this;
+          var delta = 200 - Math.random() * 100; // Ajustei a velocidade para ficar mais natural
+
+          if (this.isDeleting) { delta /= 2; }
+
+          if (!this.isDeleting && this.txt === fullTxt) {
+            delta = this.period;
+            this.isDeleting = true;
+          } else if (this.isDeleting && this.txt === '') {
+            this.isDeleting = false;
+            this.loopNum++;
+            delta = 500;
+          }
+
+          setTimeout(function() {
+            thiz.tick();
+          }, delta);
+        };
+
+        // Inicializa o efeito assim que o documento carregar
+        document.addEventListener("DOMContentLoaded", function() {
+          var elements = document.getElementsByClassName('txt-rotate');
+          for (var i=0; i<elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-rotate');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+              new TxtRotate(elements[i], JSON.parse(toRotate), period);
+            }
+          }
+        });
     </script>
-
-var TxtRotate = function(el, toRotate, period) {
-  this.toRotate = toRotate;
-  this.el = el;
-  this.loopNum = 0;
-  this.period = parseInt(period, 10) || 2000;
-  this.txt = '';
-  this.tick();
-  this.isDeleting = false;
-};
-
-TxtRotate.prototype.tick = function() {
-  var i = this.loopNum % this.toRotate.length;
-  var fullTxt = this.toRotate[i];
-
-  if (this.isDeleting) {
-    this.txt = fullTxt.substring(0, this.txt.length - 1);
-  } else {
-    this.txt = fullTxt.substring(0, this.txt.length + 1);
-  }
-
-  this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
-
-  var thiz = this;
-  var delta = 300 - Math.random() * 100;
-
-  if (this.isDeleting) { delta /= 2; }
-
-  if (!this.isDeleting && this.txt === fullTxt) {
-    delta = this.period;
-    this.isDeleting = true;
-  } else if (this.isDeleting && this.txt === '') {
-    this.isDeleting = false;
-    this.loopNum++;
-    delta = 500;
-  }
-
-  setTimeout(function() {
-    thiz.tick();
-  }, delta);
-};
-
-window.onload = function() {
-  var elements = document.getElementsByClassName('txt-rotate');
-  for (var i=0; i<elements.length; i++) {
-    var toRotate = elements[i].getAttribute('data-rotate');
-    var period = elements[i].getAttribute('data-period');
-    if (toRotate) {
-      new TxtRotate(elements[i], JSON.parse(toRotate), period);
-    }
-  }
-};
 
 </body>
 </html>
