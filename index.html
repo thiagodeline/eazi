@@ -31,7 +31,7 @@
             <div class="u-glow-container">
                 <div class="u-shape"></div>
                     <h1 class="hero-title">
-                    <span class="txt-rotate" data-period="2000" data-rotate='[ "Criar", "Inovar", "Marketing", "Full-service" ]'></span> é nosso negócio
+                    <span class="txt-fade" data-period="2000" data-rotate='[ "Criar", "Inovar", "Marketing", "Full-service" ]'></span> é nosso negócio
                     </h1>
             </div>
             <p>Criamos ecossistemas digitais sob medida: do design da sua logo ao topo do Google, acelerando o crescimento real do seu negócio.</p>
@@ -227,15 +227,28 @@
 
         // Inicializa o efeito assim que o documento carregar
         document.addEventListener("DOMContentLoaded", function() {
-          var elements = document.getElementsByClassName('txt-rotate');
-          for (var i=0; i<elements.length; i++) {
-            var toRotate = elements[i].getAttribute('data-rotate');
-            var period = elements[i].getAttribute('data-period');
-            if (toRotate) {
-              new TxtRotate(elements[i], JSON.parse(toRotate), period);
-            }
-          }
-        });
+        const words = ["Criar", "Inovar", "Marketing", "Full-service"];
+        const textElement = document.getElementById("dynamic-text");
+        let currentIndex = 0;
+        const displayPeriod = 2500; // Tempo que a palavra fica visível (2.5 segundos)
+
+        function rotateText() {
+            // 1. Adiciona a classe que faz o texto sumir suavemente (Fade Out)
+            textElement.classList.add("hide");
+
+            // 2. Aguarda a animação de Fade Out terminar (500ms do CSS) para trocar a palavra
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % words.length;
+                textElement.textContent = words[currentIndex];
+                
+                // 3. Remove a classe para o texto reaparecer suavemente (Fade In)
+                textElement.classList.remove("hide");
+            }, 500); 
+        }
+
+        // Executa a troca a cada intervalo de tempo definido
+        setInterval(rotateText, displayPeriod);
+});
     </script>
 
 </body>

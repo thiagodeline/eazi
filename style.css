@@ -592,3 +592,24 @@ footer {
   padding-right: 5px;
   white-space: nowrap;
 }
+
+/* Garante que o título principal fique sempre alinhado na mesma linha */
+.hero-title {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 12px; /* Espaçamento entre a palavra dinâmica e o resto do texto */
+}
+
+/* Estilo e animação de fade para a palavra dinâmica */
+.txt-fade {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out; /* Controla a suavidade do fade */
+    color: #a855f7; /* Deixa a palavra dinâmica em roxo para destacar seu modelo full-service */
+}
+
+/* Classe utilitária que o JS vai usar para sumir com o texto temporariamente */
+.txt-fade.hide {
+    opacity: 0;
+}
