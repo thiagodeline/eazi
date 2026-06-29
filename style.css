@@ -299,7 +299,7 @@ body {
 
 /* --- SEÇÃO DE SERVIÇOS PREMIUM (ESTILO MOLDURA) --- */
 .services {
-    padding: 80px 0 40px 0; /* Ajustado padding inferior */
+    padding: 80px 0 40px 0;
 }
 
 .section-title-premium {
@@ -416,7 +416,7 @@ body {
     box-shadow: 0 12px 40px rgba(138, 43, 226, 0.6);
 }
 
-/* --- SEÇÃO DO CARROSSEL DE IMAGENS (LOGA ABAIXO DOS BLOCOS) --- */
+/* --- SEÇÃO DO CARROSSEL DE IMAGENS PREMIUM (COM SETAS COESAS) --- */
 .portfolio-carousel-container {
     margin-top: 60px;
     width: 100%;
@@ -433,35 +433,37 @@ body {
     font-weight: 600;
 }
 
-/* Área rolável via clique e arrasto */
+/* Base controladora posicionada na mesma linha do slider */
+.carousel-wrapper-relative {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* Área visível e rolável horizontalmente */
 .infinite-slider {
     width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
-    position: relative;
-    padding: 10px 0;
-    cursor: grab;
+    padding: 15px 0;
     scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
 }
 
+/* Oculta completamente a barra de rolagem nativa */
 .infinite-slider::-webkit-scrollbar {
-    display: none; /* Oculta a barra nativa horrorosa */
+    display: none;
 }
 
-.infinite-slider.active {
-    cursor: grabbing;
-}
-
-/* Trilho das imagens */
+/* Alinhamento estrito dos itens em linha */
 .slider-track {
     display: flex;
     gap: 25px;
-    padding: 0 20px;
+    padding: 0 40px; 
     width: max-content;
 }
 
-/* Card individual */
+/* Elementos individuais fixos */
 .slide-item {
     width: 320px;
     height: 200px;
@@ -479,11 +481,11 @@ body {
     height: 100%;
     object-fit: cover;
     filter: brightness(0.85);
-    pointer-events: none; /* Evita que o navegador tente arrastar a tag img nativa */
+    user-select: none;
     transition: filter 0.4s ease, scale 0.4s ease;
 }
 
-/* Tag Roxa Flutuante */
+/* Badges customizados */
 .slide-badge {
     position: absolute;
     bottom: 15px;
@@ -508,6 +510,44 @@ body {
 .slide-item:hover img {
     filter: brightness(1);
     scale: 1.05;
+}
+
+/* Botões laterais estilo Glassmorphism */
+.carousel-arrow-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background-color: rgba(15, 15, 15, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: #bf7fff; 
+    font-size: 1.2rem;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-arrow-btn:hover {
+    background-color: rgba(138, 43, 226, 0.15);
+    border-color: var(--primary-glow);
+    color: #fff;
+    scale: 1.1;
+}
+
+.carousel-arrow-btn.prev {
+    left: -15px;
+}
+
+.carousel-arrow-btn.next {
+    right: -15px;
 }
 
 /* --- MOCKUP E HEADLINES --- */
@@ -677,5 +717,14 @@ footer {
     }
     .segments h2, .contact h2 {
         font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-arrow-btn {
+        display: none !important;
+    }
+    .slider-track {
+        padding: 0 15px;
     }
 }
