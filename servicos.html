@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços | eazi solutions</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="grid-bg">
+
+    <header class="navbar" id="navbar"></header>
+
+    <section class="hero" style="padding: 180px 0 60px 0;">
+        <div class="container hero-content">
+            <div class="u-glow-container">
+                <div class="u-shape"></div>
+                <h1 class="hero-title">Nossas <span>Soluções</span></h1>
+            </div>
+            <p>Do pixel ao papel. Desenvolvemos o ecossistema comercial e visual completo para destacar sua empresa no mercado físico e digital.</p>
+        </div>
+    </section>
+
+    <section class="services" style="padding-top: 20px;">
+        <div class="container">
+            
+            <div class="services-wrapper-frame">
+                
+                <div class="premium-card">
+                    <div class="premium-icon-box">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Ecossistema Digital<span class="dot-orange">.</span></h3>
+                    <p>Engenharia de software e posicionamento estratégico nas redes. Desenvolvemos ferramentas rápidas e designs focados em conversão para escalar o seu faturamento.</p>
+                    
+                    <div class="premium-tags">
+                        <span class="p-tag">Criação de Sites</span>
+                        <span class="p-tag">Aplicativos (Apps)</span>
+                        <span class="p-tag">Social Media (Gestão)</span>
+                        <span class="p-tag">Landing Pages</span>
+                        <span class="p-tag">Identidade Digital</span>
+                        <span class="p-tag-dots">...</span>
+                    </div>
+                    
+                    <a href="index.html#contato" class="btn-premium-card-glow">Dominar o Digital &gt;</a>
+                </div>
+
+                <div class="premium-card">
+                    <div class="premium-icon-box">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                        </svg>
+                    </div>
+                    <h3>Design & Físico<span class="dot-orange">.</span></h3>
+                    <p>Branding institucional e papelaria corporativa de alto padrão tátil. Construímos a estética e a presença real da sua marca para gerar desejo imediato.</p>
+                    
+                    <div class="premium-tags">
+                        <span class="p-tag">Logos Premium</span>
+                        <span class="p-tag">Cartões de Visita</span>
+                        <span class="p-tag">Panfletos Impactantes</span>
+                        <span class="p-tag">Folders Corporativos</span>
+                        <span class="p-tag">Identidade Visual</span>
+                        <span class="p-tag-dots">...</span>
+                    </div>
+                    
+                    <a href="index.html#contato" class="btn-premium-card-glow">Criar Identidade Física &gt;</a>
+                </div>
+
+            </div> </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 eazi solutions. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Carrega o cabeçalho idêntico ao do index
+        async function loadHeader() {
+            try {
+                const response = await fetch('header.html');
+                if (response.ok) {
+                    const html = await response.text();
+                    document.getElementById('navbar').innerHTML = html;
+                    checkScroll();
+                }
+            } catch (error) {
+                console.error("Erro ao carregar o cabeçalho em serviços:", error);
+            }
+        }
+
+        function checkScroll() {
+            const navbar = document.getElementById('navbar');
+            if (!navbar) return;
+            if (window.scrollY > 30) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }
+
+        // Função de clique ativada pelo botão de 3 risquinhos
+        function toggleMenu() {
+            const navMenu = document.getElementById('nav-menu');
+            const menuToggle = document.getElementById('menu-toggle');
+            if (navMenu && menuToggle) {
+                navMenu.classList.toggle('active');
+                menuToggle.classList.toggle('open');
+            }
+        }
+
+        window.addEventListener('scroll', checkScroll);
+        document.addEventListener('DOMContentLoaded', loadHeader);
+    </script>
+
+</body>
+</html>
