@@ -585,3 +585,120 @@ footer {
         font-size: 2.2rem;
     }
 }
+
+/* --- SEÇÃO DO CARROSSEL INFINITO (A BAIXO DOS BLOCOS) --- */
+.portfolio-carousel-container {
+    margin-top: 80px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-title {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Área visível do Slider */
+.infinite-slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 10px 0;
+}
+
+/* Máscaras degradê nas pontas para suavizar a entrada/saída das imagens */
+.infinite-slider::before,
+.infinite-slider::after {
+    content: "";
+    height: 100%;
+    position: absolute;
+    width: 150px;
+    z-index: 2;
+    pointer-events: none;
+}
+.infinite-slider::before {
+    left: 0;
+    top: 0;
+    background: linear-gradient(to right, #080808 0%, transparent 100%);
+}
+.infinite-slider::after {
+    right: 0;
+    top: 0;
+    background: linear-gradient(to left, #080808 0%, transparent 100%);
+}
+
+/* Esteira que move as imagens em loop */
+.slider-track {
+    display: flex;
+    width: calc(320px * 10); /* Largura total somando itens normais + cópias */
+    gap: 25px;
+    animation: scrollInfinite 30s linear infinite;
+}
+
+/* Pausa o carrossel suavemente quando o cliente passa o mouse por cima */
+.infinite-slider:hover .slider-track {
+    animation-play-state: paused;
+}
+
+/* Cada Card individual dentro do Carrossel */
+.slide-item {
+    width: 320px;
+    height: 200px;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: #121212;
+    transition: transform 0.4s ease, border-color 0.4s ease;
+}
+
+.slide-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.85);
+    transition: filter 0.4s ease, scale 0.4s ease;
+}
+
+/* Etiqueta roxa flutuante com o tipo do serviço */
+.slide-badge {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(138, 43, 226, 0.4);
+    color: #bf7fff;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 50px;
+    z-index: 3;
+}
+
+/* Efeito Premium de aproximação ao passar o mouse */
+.slide-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-glow);
+}
+.slide-item:hover img {
+    filter: brightness(1);
+    scale: 1.05;
+}
+
+/* --- KEYFRAMES DA ANIMAÇÃO INFINITA EM CSS --- */
+@keyframes scrollInfinite {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* Move exatamente metade do tamanho total da esteira */
+        transform: translateX(calc(-345px * 5)); 
+    }
+}
