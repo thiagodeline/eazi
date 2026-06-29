@@ -1,17 +1,23 @@
 <div class="nav-container">
-    <a href="index.html" class="logo">eazi</a>
+    <!-- Lado Esquerdo: Seu logo oficial em formato de imagem -->
+    <a href="index.html" class="logo-container">
+        <img src="eazi logo 3.png" alt="eazi solutions" class="logo-img">
+    </a>
     
+    <!-- Lado Direito: Ações (Botão de Orçamento + Botão de 3 Risquinhos) -->
     <div class="nav-actions">
         <a href="index.html#contato" class="btn-budget">
             Falar com especialista 
         </a>
         
+        <!-- Botão Interativo que aciona o Menu Invisível -->
         <button class="menu-toggle" id="menu-toggle" onclick="toggleMenu()" aria-label="Menu">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
         </button>
 
+        <!-- O Menu com os links atualizados -->
         <nav class="nav-menu" id="nav-menu">
             <a href="index.html" class="menu-link" onclick="toggleMenu()">Home</a>
             <a href="index.html#por-que-nos-escolher" class="menu-link" onclick="toggleMenu()">A Agência</a>

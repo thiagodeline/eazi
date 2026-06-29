@@ -98,6 +98,32 @@ body {
     text-decoration: none;
 }
 
+/* --- AJUSTE DO LOGO OFICIAL EM IMAGEM --- */
+.logo-container {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 32px; /* Altura ideal e equilibrada dentro do cabeçalho arredondado */
+    width: auto;  /* Mantém a proporção perfeita do logo */
+    display: block;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.logo-container:hover .logo-img {
+    transform: scale(1.02); /* Leve efeito de feedback ao passar o mouse */
+}
+
+/* Ajuste fino para telas muito pequenas */
+@media (max-width: 480px) {
+    .logo-img {
+        height: 26px; /* Reduz sutilmente em celulares para sobrar espaço para os botões */
+    }
+}
+
 /* Encapsula os botões de ação e serve de âncora para posicionar o menu dropdown */
 .nav-actions {
     display: flex;
