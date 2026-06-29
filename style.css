@@ -906,63 +906,161 @@ footer {
     line-height: 1;
 }
 
-/* --- RESPONSIVIDADE EM TELAS ACIMA E ABAIXO --- */
+/* ==========================================================================
+   --- SISTEMA DE RESPONSIVIDADE ULTRA-OTIMIZADO PARA MOBILE ---
+   ========================================================================== */
+
+/* --- TELA SMARTPHONES GRANDES E TABLETS (Abaixo de 950px) --- */
 @media (max-width: 950px) {
+    .hero {
+        padding: 160px 0 80px 0; /* Diminui o recuo superior para não empurrar o conteúdo muito para baixo */
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem; /* Título hero menor para não quebrar palavras longas */
+        letter-spacing: -1px;
+    }
+
+    .z-glow-shape {
+        width: 240px;  /* Reduz o tamanho do "Z" brilhante de fundo para casar com o título */
+        height: 240px;
+    }
+
     .why-container {
-        grid-template-columns: 1fr;
-        gap: 40px;
+        grid-template-columns: 1fr; /* Força empilhamento vertical */
+        gap: 35px;
     }
+
+    .why-content {
+        text-align: center; /* Centraliza textos para melhor leitura no mobile */
+    }
+
+    .why-divider {
+        margin: 20px auto; /* Centraliza a linha roxa descritiva */
+    }
+
     .why-content h2 {
-        font-size: 2.3rem;
+        font-size: 2.2rem;
+        letter-spacing: -1px;
     }
-    .why-choose-us {
-        padding: 70px 0;
-    }
+
     .services-wrapper-frame {
-        grid-template-columns: 1fr;
-        padding: 25px;
+        grid-template-columns: 1fr; /* Empilha os cards premium */
+        padding: 24px;
         border-radius: 24px;
     }
-    .hero-content h1 {
-        font-size: 2.8rem;
+
+    .premium-card {
+        padding: 35px 25px; /* Reduz preenchimentos internos desnecessários */
+        border-radius: 20px;
     }
-    .segments h2, .contact h2 {
-        font-size: 2.2rem;
+
+    .segments h2, .section-title-premium, .contact h2 {
+        font-size: 2rem;
     }
 }
 
+/* --- TELA SMARTPHONES PADRÃO (Abaixo de 850px - Ajuste das Abas) --- */
 @media (max-width: 850px) {
     .tabs-container {
         grid-template-columns: 1fr;
-        gap: 25px;
+        gap: 20px;
     }
+    
     .tabs-menu {
         flex-direction: row;
-        overflow-x: auto;
-        padding-bottom: 10px;
+        overflow-x: auto; /* Ativa scroll lateral para os botões das abas */
+        padding: 5px 0 15px 0;
         white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
+        -webkit-overflow-scrolling: touch; /* Scroll nativo macio no iOS/Android */
+        gap: 8px;
+        
+        /* Oculta a barra de rolagem horizontal padrão para um visual mais limpo */
+        scrollbar-width: none; 
     }
+    
+    .tabs-menu::-webkit-scrollbar {
+        display: none; 
+    }
+    
     .tab-btn {
         width: auto;
-        padding: 14px 20px;
-        font-size: 0.9rem;
+        padding: 12px 18px;
+        font-size: 0.85rem;
+        border-radius: 12px;
+        display: inline-block;
     }
+    
     .tabs-content-display {
         padding: 30px 20px;
         min-height: auto;
+        border-radius: 20px;
     }
+    
     .tab-panel h3 {
-        font-size: 1.7rem;
+        font-size: 1.5rem;
+    }
+
+    .tab-features {
+        padding: 20px;
     }
 }
 
+/* --- TELA MOBILE PEQUENA / COMPACTA (Abaixo de 480px) --- */
 @media (max-width: 480px) {
+    .container {
+        width: 88%; /* Dá uma margem ligeiramente maior nas laterais para respirar */
+    }
+
+    .navbar {
+        top: 10px;
+        width: 94%;
+        padding: 10px 16px;
+    }
+
+    .logo-img {
+        height: 24px; /* Reduz o logo sutilmente para não esmagar os botões */
+    }
+
     .btn-budget {
         padding: 8px 14px;
-        font-size: 0.8rem;
+        font-size: 0.75rem;
+        gap: 4px;
     }
-    .logo-img {
-        height: 26px; /* Ajuste para logos mobile */
+
+    .menu-toggle {
+        width: 36px;
+        height: 36px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.1rem; /* Tamanho cirúrgico para caber em qualquer celular sem hifenização esquisita */
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+
+    .btn-hero-glow {
+        width: 100%; /* Botão principal vira "bloco inteiro" facilitando o clique com o polegar */
+        padding: 14px 24px;
+    }
+
+    .why-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .visual-card-wrapper {
+        aspect-ratio: 16 / 10; /* Achata levemente a proporção da imagem/mockup para não ocupar a tela toda verticalmente */
+    }
+
+    .premium-card h3 {
+        font-size: 1.6rem;
+    }
+
+    .contact-form input, .contact-form textarea {
+        padding: 15px; /* Inputs mais compactos e confortáveis */
+        font-size: 0.95rem;
     }
 }
