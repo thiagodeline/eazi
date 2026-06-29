@@ -209,7 +209,7 @@
         // Carrega o cabeçalho idêntico ao do index
         async function loadHeader() {
             try {
-                const response = await fetch('header.html');
+                const response = await fetch('pages/header.html');
                 if (response.ok) {
                     const html = await response.text();
                     document.getElementById('navbar').innerHTML = html;
