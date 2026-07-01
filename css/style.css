@@ -1132,3 +1132,79 @@ footer {
         height: 240px; /* Reduz o tamanho da imagem em telas pequenas */
     }
 }
+
+/* --- ESTILIZAÇÃO DO RODAPÉ --- */
+.footer-container {
+    background: #0a0a0c;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 40px 0 20px 0;
+    width: 100%;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.footer-logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.5px;
+}
+
+.footer-logo span {
+    color: #6366f1; /* Cor roxa/azul de destaque */
+}
+
+.footer-brand p {
+    color: #8e8e93;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+/* Link e Ícone do Instagram Pequeno */
+.footer-insta-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #8e8e93;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footer-insta-icon {
+    width: 18px; /* Força o ícone a ficar pequeno e discreto */
+    height: 18px;
+}
+
+.footer-insta-link:hover {
+    color: #6366f1; /* Acende no hover para dar feedback visual */
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    padding-top: 20px;
+}
+
+.footer-bottom p {
+    color: #48484a;
+    font-size: 0.8rem;
+}
+
+/* Responsividade Básica */
+@media (max-width: 600px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer-insta-link {
+        justify-content: center;
+    }
+}
