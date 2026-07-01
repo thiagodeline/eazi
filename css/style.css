@@ -252,8 +252,8 @@ body {
     object-fit: contain;
     
     /* Parâmetros de simulação do Neon Premium */
-    opacity: 0.55;
-    filter: blur(16px);
+    opacity: 0.35;
+    filter: blur(13px);
     -webkit-filter: blur(16px);
     z-index: 1;
     pointer-events: none;
